@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_utoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ngeschwi <ngeschwi@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: ngeschwi <ngeschwi@stutent.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 09:53:18 by ngeschwi          #+#    #+#             */
-/*   Updated: 2021/03/25 09:53:48 by ngeschwi         ###   ########.fr       */
+/*   Updated: 2021/03/27 16:08:58 by ngeschwi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,6 @@ static int	ft_size_n(unsigned int n)
 
 	i = 0;
 	nbr = n;
-	if (n < 0)
-	{
-		nbr = -n;
-		i++;
-	}
 	while (nbr >= 10)
 	{
 		nbr = nbr / 10;
@@ -37,11 +32,6 @@ static void	ft_recursive(unsigned int n, char *str, int size_int)
 	unsigned int	nbr;
 
 	nbr = n;
-	if (n < 0)
-	{
-		str[0] = '-';
-		nbr = -n;
-	}
 	if (nbr >= 10)
 	{
 		ft_recursive(nbr / 10, str, size_int - 1);

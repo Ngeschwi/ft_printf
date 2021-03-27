@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_hexa.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ngeschwi <ngeschwi@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: ngeschwi <ngeschwi@stutent.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 11:50:48 by ngeschwi          #+#    #+#             */
-/*   Updated: 2021/03/26 12:02:24 by ngeschwi         ###   ########.fr       */
+/*   Updated: 2021/03/27 17:17:00 by ngeschwi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ void	ft_printf_hexa(va_list args, t_info *Info)
 				write(1, "0", 1);
 		ft_putstr(nbr);
 	}
-	Info->indice++;
 }
 
 void	ft_check_hexa(va_list args, t_info *Info)

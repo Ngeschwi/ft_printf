@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_int.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ngeschwi <ngeschwi@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: ngeschwi <ngeschwi@stutent.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 11:38:47 by ngeschwi          #+#    #+#             */
-/*   Updated: 2021/03/26 12:15:08 by ngeschwi         ###   ########.fr       */
+/*   Updated: 2021/03/27 17:16:52 by ngeschwi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ void	ft_printf_int(va_list args, t_info *Info)
 				write(1, "0", 1);
 		ft_putstr(nbr);
 	}
-	Info->indice++;
 }
 
 void	ft_check_int(va_list args, t_info *Info)

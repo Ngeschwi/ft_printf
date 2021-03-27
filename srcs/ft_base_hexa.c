@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_base_hexa.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ngeschwi <ngeschwi@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: ngeschwi <ngeschwi@stutent.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/19 09:37:11 by ngeschwi          #+#    #+#             */
-/*   Updated: 2021/03/25 15:39:38 by ngeschwi         ###   ########.fr       */
+/*   Updated: 2021/03/27 16:07:52 by ngeschwi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,6 @@ char	*ft_base_hexa(unsigned int nbr, char *base)
 	int				size_int;
 
 	nb = nbr;
-	if (nbr < 0)
-		nb = -nb;
 	size_int = ft_nbrlen(nbr);
 	str = malloc(sizeof(int) * size_int + 1);
 	if (str == NULL)
