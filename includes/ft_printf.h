@@ -17,7 +17,7 @@ typedef struct s_info
 	int			precision;
 }				t_info;
 
-int		ft_printf(const char *text, ...);
+int		ft_printf(const char *text, ...) __attribute__ ((format(printf, 1, 2)));
 void	ft_get_tab(const char *text, va_list args, t_info *Info);
 void	ft_check_tab(va_list args, t_info *Info);
 
@@ -26,6 +26,7 @@ void	ft_check_carac(va_list args, t_info *Info);
 void	ft_check_hexa(va_list args, t_info *Info);
 void	ft_check_int(va_list args, t_info *Info);
 void	ft_check_point(va_list args, t_info *Info);
+void	ft_printf_pc(va_list args, t_info *Info);
 
 char	*ft_itoa(int n);
 char	*ft_utoa(unsigned int n);
@@ -35,6 +36,7 @@ void	ft_putstr(char *str);
 int		ft_strlen(const char *str);
 int		ft_isdigit(char c);
 int		ft_isalpha(int c);
+char	*ft_reduce_tab(t_info *Info, char *nbr);
 char	*ft_base_hexa(unsigned int nbr, char *base);
 
 #endif

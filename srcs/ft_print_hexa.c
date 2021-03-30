@@ -6,7 +6,7 @@
 /*   By: ngeschwi <ngeschwi@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 11:50:48 by ngeschwi          #+#    #+#             */
-/*   Updated: 2021/03/30 10:11:20 by ngeschwi         ###   ########.fr       */
+/*   Updated: 2021/03/30 13:07:14 by ngeschwi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ void	ft_check_hexa(va_list args, t_info *Info)
 {
 	int		diff;
 	char	*nbr;
+
 	if (Info->tab[Info->size_tab - 1] == 120)
 		nbr = ft_base_hexa(va_arg(args, unsigned int), "0123456789abcdef");
 	else

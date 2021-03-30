@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_point.c                                   :+:      :+:    :+:   */
+/*   ft_reduce_tab.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngeschwi <ngeschwi@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/26 11:51:13 by ngeschwi          #+#    #+#             */
-/*   Updated: 2021/03/30 14:05:26 by ngeschwi         ###   ########.fr       */
+/*   Created: 2021/03/30 12:07:11 by ngeschwi          #+#    #+#             */
+/*   Updated: 2021/03/30 14:05:43 by ngeschwi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-void	ft_check_point(va_list args, t_info *Info)
+char	*ft_reduce_tab(t_info *Info, char *nbr)
 {
-	char	*point;
+	int		size_nbr;
+	int		i;
+	char	*new_nbr;
 
-	if (Info->indice != 0)
+	i = 1;
+	size_nbr = ft_strlen(nbr);
+	new_nbr = malloc(sizeof(char) * size_nbr);
+	while (i <= size_nbr)
 	{
-		point = va_arg(args, char *);
-		while (point++)
-			write(1, &point, 1);
+		new_nbr[i - 1] = nbr[i];
+		i++;
 	}
-	return ;
+	return (new_nbr);
 }

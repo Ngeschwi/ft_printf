@@ -6,7 +6,7 @@
 /*   By: ngeschwi <ngeschwi@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 11:00:10 by ngeschwi          #+#    #+#             */
-/*   Updated: 2021/03/30 10:10:33 by ngeschwi         ###   ########.fr       */
+/*   Updated: 2021/03/30 14:02:23 by ngeschwi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,24 @@
 
 void	ft_printf_carac(t_info *Info, char *text)
 {
+	int	i;
+
+	i = 0;
 	if (Info->tab[Info->size_tab - 1] == 99)
-	{
 		ft_putchar((char)text);
-	}
 	else
-		ft_putstr(text);
+	{
+		if (Info->precision != 0)
+		{
+			while (i < ft_strlen(text) && i < Info->precision)
+			{
+				ft_putchar((char)text[i]);
+				i++;
+			}
+		}
+		else
+			ft_putstr(text);
+	}
 }
 
 void	ft_print_carac_minus(t_info *Info, int diff, char *text)
@@ -33,20 +45,37 @@ void	ft_print_carac_minus(t_info *Info, int diff, char *text)
 	ft_printf_carac(Info, text);
 }
 
-void	ft_check_carac(va_list args, t_info *Info)
+int	ft_calcul_diff(t_info *Info, char *text)
 {
 	int	diff;
-	char *text;
 
 	if (Info->tab[Info->size_tab - 1] == 99)
-		text = va_arg(args, char *);
+		diff = Info->nbr_aff - 1;
 	else
-		text = va_arg(args, char *);
+	{
+		if (Info->precision == 0 && ft_strlen(text) > Info->precision)
+			diff = Info->nbr_aff - ft_strlen(text);
+		else if (Info->precision != 0 && ft_strlen(text) <= Info->precision)
+			diff = Info->nbr_aff - ft_strlen(text);
+		else
+			diff = Info->nbr_aff - Info->precision;
+	}
+	return (diff);
+}
+
+void	ft_check_carac(va_list args, t_info *Info)
+{
+	int		diff;
+	char	*text;
+
+	text = va_arg(args, char *);
+	if (text == NULL)
+		text = "(null)";
 	if (Info->nbr_aff == 0)
 		ft_printf_carac(Info, text);
 	else
 	{
-		diff = Info->nbr_aff - ft_strlen(va_arg(args, char *));
+		diff = ft_calcul_diff(Info, text);
 		if (Info->minus == 0)
 			ft_print_carac_minus(Info, diff, text);
 		else

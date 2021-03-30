@@ -6,7 +6,7 @@
 /*   By: ngeschwi <ngeschwi@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 09:38:20 by ngeschwi          #+#    #+#             */
-/*   Updated: 2021/03/30 10:13:42 by ngeschwi         ###   ########.fr       */
+/*   Updated: 2021/03/30 13:56:11 by ngeschwi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,11 @@ static int	ft_len_tab(const char *text, t_info *Info)
 {
 	int	i;
 
-	i = 0;
+	i = 1;
 	while (text[Info->indice] && !ft_isalpha(text[Info->indice]))
 	{
+		if (text[Info->indice] == '%')
+			break ;
 		i++;
 		Info->indice++;
 	}
@@ -54,7 +56,6 @@ static int	ft_len_tab(const char *text, t_info *Info)
 static void	ft_init_struct(t_info *Info)
 {
 	Info->size_tab = 0;
-	Info->indice = 0;
 	Info->minus = 0;
 	Info->zeros = 0;
 	Info->nbr_aff = 0;
@@ -67,14 +68,17 @@ int	ft_printf(const char *text, ...)
 	t_info		Info;
 
 	ft_init_struct(&Info);
+	Info.indice = 0;
 	va_start(args, text);
 	while (text[Info.indice])
 	{
 		if (text[Info.indice] == '%')
 		{
+			Info.indice++;
 			Info.tab = malloc(sizeof(char) * ft_len_tab(text, &Info) + 1);
 			ft_get_tab(text, args, &Info);
 			Info.indice--;
+			ft_init_struct(&Info);
 		}
 		else
 			ft_putchar(text[Info.indice]);

@@ -6,7 +6,7 @@
 /*   By: ngeschwi <ngeschwi@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 10:03:58 by ngeschwi          #+#    #+#             */
-/*   Updated: 2021/03/30 09:02:11 by ngeschwi         ###   ########.fr       */
+/*   Updated: 2021/03/30 14:03:25 by ngeschwi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,8 @@ void	ft_which_conver(va_list args, t_info *Info)
 		ft_check_carac(args, Info);
 	else if (Info->tab[Info->size_tab - 1] == 115)
 		ft_check_carac(args, Info);
-		/*
 	else if (Info->tab[Info->size_tab - 1] == 112)
 		ft_check_point(args, Info);
-		*/
 	else if (Info->tab[Info->size_tab - 1] == 100)
 		ft_check_int(args, Info);
 	else if (Info->tab[Info->size_tab - 1] == 105)
@@ -33,10 +31,7 @@ void	ft_which_conver(va_list args, t_info *Info)
 	else if (Info->tab[Info->size_tab - 1] == 88)
 		ft_check_hexa(args, Info);
 	else if (Info->tab[Info->size_tab - 1] == 37)
-	{
-		ft_putchar(Info->tab[Info->size_tab]);
-		Info->indice++;
-	}
+		ft_printf_pc(args, Info);
 }
 
 static int	ft_len_nbr(t_info *Info, int i)
@@ -72,7 +67,7 @@ void	ft_check_tab(va_list args, t_info *Info)
 	char	*nbr;
 	int		i;
 	int		size_nbr;
-	
+
 	i = Info->size_tab - 1;
 	while (i >= 0)
 	{
@@ -91,7 +86,7 @@ void	ft_check_tab(va_list args, t_info *Info)
 		free(nbr);
 		i--;
 	}
-	if (Info->minus == 1)
+	if (Info->minus == 1 || Info->precision != 0)
 		Info->zeros = 0;
 	ft_which_conver(args, Info);
 }

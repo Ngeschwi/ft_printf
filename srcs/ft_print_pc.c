@@ -1,26 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_point.c                                   :+:      :+:    :+:   */
+/*   ft_print_pc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngeschwi <ngeschwi@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/26 11:51:13 by ngeschwi          #+#    #+#             */
-/*   Updated: 2021/03/30 14:05:26 by ngeschwi         ###   ########.fr       */
+/*   Created: 2021/03/30 13:37:30 by ngeschwi          #+#    #+#             */
+/*   Updated: 2021/03/30 14:04:36 by ngeschwi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-void	ft_check_point(va_list args, t_info *Info)
+void	ft_printf_pc(va_list args, t_info *Info)
 {
-	char	*point;
+	int	i;
 
-	if (Info->indice != 0)
+	i = 1;
+	if (Info->minus == 0)
 	{
-		point = va_arg(args, char *);
-		while (point++)
-			write(1, &point, 1);
+		if (Info->zeros == 0)
+			while (i++ < Info->nbr_aff)
+				ft_putchar(' ');
+		else
+			while (i++ < Info->nbr_aff)
+				ft_putchar('0');
+		ft_putchar('%');
 	}
-	return ;
+	else
+	{
+		ft_putchar('%');
+		while (i++ < Info->nbr_aff)
+			ft_putchar(' ');
+	}
 }
