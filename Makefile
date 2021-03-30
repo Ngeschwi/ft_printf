@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ngeschwi <ngeschwi@stutent.42lyon.fr>      +#+  +:+       +#+         #
+#    By: ngeschwi <ngeschwi@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/26 12:03:34 by ngeschwi          #+#    #+#              #
-#    Updated: 2021/03/27 16:16:11 by ngeschwi         ###   ########.fr        #
+#    Updated: 2021/03/30 14:08:45 by ngeschwi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,9 @@ SRCS	= srcs/ft_printf.c \
 			srcs/ft_putchar.c \
 			srcs/ft_putstr.c \
 			srcs/ft_strlen.c \
-			srcs/ft_utoa.c 
+			srcs/ft_utoa.c \
+			srcs/ft_reduce_tab.c \
+			srcs/ft_print_pc.c
 
 OBJS	= $(SRCS:.c=.o)
 
