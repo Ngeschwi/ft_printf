@@ -6,7 +6,7 @@
 /*   By: ngeschwi <ngeschwi@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 11:50:48 by ngeschwi          #+#    #+#             */
-/*   Updated: 2021/03/30 13:07:14 by ngeschwi         ###   ########.fr       */
+/*   Updated: 2021/03/31 08:58:56 by ngeschwi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	ft_printf_hexa(t_info *Info, char *nbr)
 	{
 		diff = Info->precision - ft_strlen(nbr);
 		if (diff > 0)
-			while (diff-- != 0)
+			while (diff-- > 0)
 				write(1, "0", 1);
 		ft_putstr(nbr);
 	}
@@ -41,7 +41,7 @@ void	ft_printf_hexa(t_info *Info, char *nbr)
 	{
 		diff = Info->precision - ft_strlen(nbr);
 		if (diff > 0)
-			while (diff-- != 0)
+			while (diff-- > 0)
 				write(1, "0", 1);
 		ft_putstr(nbr);
 	}

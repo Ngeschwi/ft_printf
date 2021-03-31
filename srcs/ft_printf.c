@@ -6,7 +6,7 @@
 /*   By: ngeschwi <ngeschwi@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 09:38:20 by ngeschwi          #+#    #+#             */
-/*   Updated: 2021/03/30 13:56:11 by ngeschwi         ###   ########.fr       */
+/*   Updated: 2021/03/31 09:54:42 by ngeschwi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,4 +86,11 @@ int	ft_printf(const char *text, ...)
 	}
 	va_end(args);
 	return (1);
+}
+
+
+int	main()
+{
+	int d = 15;
+	printf("%p", &d);
 }
