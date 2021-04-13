@@ -6,13 +6,13 @@
 /*   By: ngeschwi <ngeschwi@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 12:07:11 by ngeschwi          #+#    #+#             */
-/*   Updated: 2021/03/30 14:05:43 by ngeschwi         ###   ########.fr       */
+/*   Updated: 2021/04/02 08:58:34 by ngeschwi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-char	*ft_reduce_tab(t_info *Info, char *nbr)
+char	*ft_reduce_tab(char *nbr)
 {
 	int		size_nbr;
 	int		i;

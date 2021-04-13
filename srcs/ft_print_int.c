@@ -6,7 +6,7 @@
 /*   By: ngeschwi <ngeschwi@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 11:38:47 by ngeschwi          #+#    #+#             */
-/*   Updated: 2021/03/30 14:03:56 by ngeschwi         ###   ########.fr       */
+/*   Updated: 2021/04/02 08:58:41 by ngeschwi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ft_printf_int(t_info *Info, char *nbr)
 
 	if (nbr[0] == '-')
 	{
-		nbr = ft_reduce_tab(Info, nbr);
+		nbr = ft_reduce_tab(nbr);
 		if (!(Info->zeros == 1 && Info->nbr_aff != 0))
 			ft_putchar('-');
 	}
