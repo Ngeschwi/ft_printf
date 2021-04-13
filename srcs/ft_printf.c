@@ -6,7 +6,7 @@
 /*   By: ngeschwi <ngeschwi@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 09:38:20 by ngeschwi          #+#    #+#             */
-/*   Updated: 2021/04/13 14:32:49 by ngeschwi         ###   ########.fr       */
+/*   Updated: 2021/04/13 16:59:52 by ngeschwi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void	ft_get_tab(const char *text, va_list args, t_info *Info)
 			ft_check_tab(args, Info);
 		i++;
 	}
-	free(Info->tab);
 }
 
 static int	ft_len_tab(const char *text, t_info *Info)
@@ -78,6 +77,7 @@ int	ft_printf(const char *text, ...)
 			Info.tab = malloc(sizeof(char) * ft_len_tab(text, &Info) + 1);
 			ft_get_tab(text, args, &Info);
 			Info.indice--;
+			free(Info.tab);
 			ft_init_struct(&Info);
 		}
 		else

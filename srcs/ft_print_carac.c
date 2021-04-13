@@ -6,7 +6,7 @@
 /*   By: ngeschwi <ngeschwi@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 11:00:10 by ngeschwi          #+#    #+#             */
-/*   Updated: 2021/04/13 15:33:52 by ngeschwi         ###   ########.fr       */
+/*   Updated: 2021/04/13 17:47:42 by ngeschwi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_printf_carac(t_info *Info, char *text)
 		ft_putchar((char)text);
 	else
 	{
-		if (Info->precision != 0)
+		if (Info->precision > 0)
 		{
 			while (i < ft_strlen(text) && i < Info->precision)
 			{
@@ -29,6 +29,8 @@ void	ft_printf_carac(t_info *Info, char *text)
 				i++;
 			}
 		}
+		else if (Info->precision == -1)
+			return ;
 		else
 			ft_putstr(text);
 	}
@@ -58,7 +60,12 @@ int	ft_calcul_diff(t_info *Info, char *text)
 		else if (Info->precision != 0 && ft_strlen(text) <= Info->precision)
 			diff = Info->nbr_aff - ft_strlen(text);
 		else
-			diff = Info->nbr_aff - Info->precision;
+		{
+			if (Info->precision == -1)
+				diff = Info->nbr_aff - (Info->precision + 1);
+			else
+				diff = Info->nbr_aff - Info->precision;
+		}
 	}
 	return (diff);
 }

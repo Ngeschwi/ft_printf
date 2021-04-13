@@ -6,7 +6,7 @@
 /*   By: ngeschwi <ngeschwi@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 11:51:13 by ngeschwi          #+#    #+#             */
-/*   Updated: 2021/04/13 15:21:03 by ngeschwi         ###   ########.fr       */
+/*   Updated: 2021/04/13 16:02:22 by ngeschwi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static int	ft_calcul_diff(t_info *Info, char *point)
 void	ft_printf_point(t_info *Info, char *point)
 {
 	int	diff;
-	
+
 	diff = Info->precision - ft_strlen(point);
 	if (Info->zeros == 0)
 		ft_putstr("0x");
@@ -62,6 +62,7 @@ void	ft_printf_point(t_info *Info, char *point)
 		while (diff-- > 0)
 			ft_putchar('0');
 	ft_putstr(point);
+	free(point);
 }
 
 void	ft_print_point_minus(t_info *Info, int diff, char *point)
@@ -85,7 +86,7 @@ void	ft_check_point(va_list args, t_info *Info)
 	int					diff;
 
 	ull = va_arg(args, unsigned long long);
-	if (ull == NULL)
+	if (ull == 0)
 	{
 		ft_putstr("0x0");
 		return ;

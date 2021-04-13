@@ -6,7 +6,7 @@
 /*   By: ngeschwi <ngeschwi@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 11:50:48 by ngeschwi          #+#    #+#             */
-/*   Updated: 2021/04/13 15:10:49 by ngeschwi         ###   ########.fr       */
+/*   Updated: 2021/04/13 18:00:44 by ngeschwi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,14 @@ void	ft_printf_hexa(t_info *Info, char *nbr)
 {
 	int		diff;
 
+	if (Info->precision == -1 && nbr[0] == '0')
+		return ;
 	diff = Info->precision - ft_strlen(nbr);
 	if (diff > 0)
 		while (diff-- > 0)
 			ft_putchar('0');
 	ft_putstr(nbr);
+	free(nbr);
 }
 
 void	ft_print_hexa_minus(t_info *Info, int diff, char *nbr)
