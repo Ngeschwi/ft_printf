@@ -36,7 +36,7 @@ void	ft_putstr(char *str);
 int		ft_strlen(const char *str);
 int		ft_isdigit(char c);
 int		ft_isalpha(int c);
-char	*ft_reduce_tab(t_info *Info, char *nbr);
+char	*ft_reduce_tab(char *nbr);
 char	*ft_base_hexa(unsigned int nbr, char *base);
 
 #endif
