@@ -17,11 +17,12 @@ typedef struct s_info
 	int			zeros;
 	int			nbr_aff;
 	int			precision;
+	int			error_star;
 }				t_info;
 
 int		ft_printf(const char *text, ...) __attribute__ ((format(printf, 1, 2)));
 void	ft_check_tab(va_list args, t_info *Info);
-int		ft_check_change_star(t_info *Info);
+int		ft_check_star(t_info *Info, const char *text);
 int		ft_replace_star(t_info *Info, int i);
 
 void	ft_which_conver(va_list args, t_info *Info);

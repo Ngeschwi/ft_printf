@@ -6,7 +6,7 @@
 /*   By: ngeschwi <ngeschwi@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 09:38:20 by ngeschwi          #+#    #+#             */
-/*   Updated: 2021/04/14 14:51:22 by ngeschwi         ###   ########.fr       */
+/*   Updated: 2021/04/14 16:53:19 by ngeschwi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,10 @@ static void	ft_calcul_indice(t_info *Info)
 {
 	if (Info->star == NULL)
 		Info->indice -= (Info->size_tab - 1);
+	else if (Info->error_star == 0)
+		Info->indice -= Info->size_tab - Info->size_star;
 	else
-		Info->indice -= Info->size_tab - (Info->size_star + 1);
+		Info->indice -= Info->size_tab + 1;
 }
 
 static void	ft_get_tab(const char *text, va_list args, t_info *Info)
@@ -28,7 +30,7 @@ static void	ft_get_tab(const char *text, va_list args, t_info *Info)
 	list_conver = "cspdiuxX%";
 	i = 0;
 	ft_calcul_indice(Info);
-	while (i < Info->size_tab)
+	while (i < (Info->size_tab + Info->error_star))
 	{
 		if (text[Info->indice] == '*')
 			i = ft_replace_star(Info, i);
@@ -55,24 +57,26 @@ static int	ft_len_tab(const char *text, t_info *Info, va_list args)
 	int	count;
 
 	i = 1;
-	count = 0;
 	while (text[Info->indice] && !ft_isalpha(text[Info->indice]))
 	{
+		count = 0;
 		if (text[Info->indice] == '%')
 			break ;
 		if (text[Info->indice] == '*')
 		{
 			Info->star = ft_itoa(va_arg(args, int));
-			if (!ft_check_change_star(Info))
+			Info->size_star = ft_strlen(Info->star);
+			if (!ft_check_star(Info, text))
 				break ;
 			while (Info->star[count++])
 				i++;
+			i--;
 		}
 		i++;
 		Info->indice++;
 	}
-	Info->size_tab = i + 1;
-	return (i + 1);
+	Info->size_tab += i + 1;
+	return (Info->size_tab);
 }
 
 static void	ft_init_struct(t_info *Info)
@@ -82,6 +86,7 @@ static void	ft_init_struct(t_info *Info)
 	Info->zeros = 0;
 	Info->nbr_aff = 0;
 	Info->precision = 0;
+	Info->error_star = 0;
 	Info->star = NULL;
 }
 
@@ -97,8 +102,8 @@ int	ft_printf(const char *text, ...)
 	{
 		if (text[Info.indice] == '%')
 		{
-			Info.indice++;
-			Info.tab = malloc(sizeof(char) * ft_len_tab(text, &Info, args));
+			printf("%d\n", Info.indice);
+			Info.tab = malloc(sizeof(char) * (ft_len_tab(text, &Info, args) + 1));
 			ft_get_tab(text, args, &Info);
 			Info.indice--;
 			free(Info.tab);
@@ -110,4 +115,10 @@ int	ft_printf(const char *text, ...)
 	}
 	va_end(args);
 	return (1);
+}
+
+int	main()
+{
+	printf("{%.*d}\n", -5, 42);
+	ft_printf("{%.*d}\n", -5, 42);
 }
