@@ -6,7 +6,7 @@
 /*   By: ngeschwi <ngeschwi@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 10:03:58 by ngeschwi          #+#    #+#             */
-/*   Updated: 2021/04/13 17:12:14 by ngeschwi         ###   ########.fr       */
+/*   Updated: 2021/04/14 09:28:22 by ngeschwi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,13 @@ static void	ft_wich_one(t_info *Info, int i, char *nbr)
 		else
 			Info->precision = ft_atoi(nbr);
 	}
-	if (Info->tab[i + 1] == '0')
+	if (Info->tab[i + 1] == '0' && ft_strlen(nbr) != 1)
 		Info->zeros = 1;
+	if (Info->nbr_aff != 0 && Info->precision == -1)
+		if (Info->tab[Info->size_tab] == 100
+			|| Info->tab[Info->size_tab] == 105
+			|| Info->tab[Info->size_tab] == 117)
+			Info->precision = 0;
 }
 
 int	ft_check_flag(t_info *Info, int i)
@@ -81,7 +86,7 @@ void	ft_check_tab(va_list args, t_info *Info)
 	int		i;
 	int		size_nbr;
 
-	i = Info->size_tab - 1;
+	i = Info->size_tab - 2;
 	while (i >= 0)
 	{
 		while (!ft_isdigit(Info->tab[i]) && i > 0)

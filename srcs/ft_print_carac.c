@@ -6,7 +6,7 @@
 /*   By: ngeschwi <ngeschwi@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 11:00:10 by ngeschwi          #+#    #+#             */
-/*   Updated: 2021/04/13 17:47:42 by ngeschwi         ###   ########.fr       */
+/*   Updated: 2021/04/14 08:36:05 by ngeschwi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,11 +76,9 @@ void	ft_check_carac(va_list args, t_info *Info)
 	char	*text;
 
 	text = va_arg(args, char *);
-	if (Info->tab[Info->size_tab - 1] == 99)
-		if ((int)text == 0)
-			return ;
-	if (text == NULL)
+	if (text == NULL && Info->tab[Info->size_tab - 1] == 115)
 		text = "(null)";
+	
 	if (Info->nbr_aff == 0)
 		ft_printf_carac(Info, text);
 	else

@@ -6,7 +6,7 @@
 /*   By: ngeschwi <ngeschwi@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 11:38:47 by ngeschwi          #+#    #+#             */
-/*   Updated: 2021/04/13 18:00:25 by ngeschwi         ###   ########.fr       */
+/*   Updated: 2021/04/14 08:47:14 by ngeschwi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@ static int	ft_calcul_diff(t_info *Info, char *nbr)
 		diff = Info->nbr_aff - Info->precision;
 	else
 		diff = Info->nbr_aff - ft_strlen(nbr);
+	if (Info->precision == -1)
+		diff++;
+	if (nbr[0] == '-' && (Info->precision > ft_strlen(nbr) || Info->zeros == 1))
+		diff--;
 	return (diff);
 }
 
@@ -75,8 +79,6 @@ void	ft_check_int(va_list args, t_info *Info)
 	else
 	{
 		diff = ft_calcul_diff(Info, nbr);
-		if (nbr[0] == '-' && Info->precision != 0)
-			diff--;
 		if (Info->minus == 0)
 			ft_print_int_minus(Info, diff, nbr);
 		else

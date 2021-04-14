@@ -6,7 +6,7 @@
 /*   By: ngeschwi <ngeschwi@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 11:51:13 by ngeschwi          #+#    #+#             */
-/*   Updated: 2021/04/13 16:02:22 by ngeschwi         ###   ########.fr       */
+/*   Updated: 2021/04/14 08:41:51 by ngeschwi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,11 +86,6 @@ void	ft_check_point(va_list args, t_info *Info)
 	int					diff;
 
 	ull = va_arg(args, unsigned long long);
-	if (ull == 0)
-	{
-		ft_putstr("0x0");
-		return ;
-	}
 	point = ft_ull_base(ull);
 	if (Info->nbr_aff == 0)
 		ft_printf_point(Info, point);
