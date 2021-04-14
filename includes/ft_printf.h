@@ -9,6 +9,8 @@
 typedef struct s_info
 {
 	char		*tab;
+	char		*star;
+	int			size_star;
 	int			size_tab;
 	int			indice;
 	int			minus;
@@ -18,15 +20,15 @@ typedef struct s_info
 }				t_info;
 
 int		ft_printf(const char *text, ...) __attribute__ ((format(printf, 1, 2)));
-void	ft_get_tab(const char *text, va_list args, t_info *Info);
 void	ft_check_tab(va_list args, t_info *Info);
+int		ft_check_change_star(t_info *Info);
 
 void	ft_which_conver(va_list args, t_info *Info);
 void	ft_check_carac(va_list args, t_info *Info);
 void	ft_check_hexa(va_list args, t_info *Info);
 void	ft_check_int(va_list args, t_info *Info);
 void	ft_check_point(va_list args, t_info *Info);
-void	ft_printf_pc(va_list args, t_info *Info);
+void	ft_printf_pc(t_info *Info);
 
 char	*ft_itoa(int n);
 char	*ft_utoa(unsigned int n);
