@@ -6,36 +6,28 @@
 /*   By: ngeschwi <ngeschwi@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 09:38:20 by ngeschwi          #+#    #+#             */
-/*   Updated: 2021/04/14 11:22:17 by ngeschwi         ###   ########.fr       */
+/*   Updated: 2021/04/14 14:51:22 by ngeschwi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-static int	ft_replace_star(t_info *Info, int i)
+static void	ft_calcul_indice(t_info *Info)
 {
-	int	count;
-
-	count = 0;
-	while (count < Info->size_star)
-	{
-		Info->tab[i] = Info->star[count];
-		i++;
-		count++;
-	}
-	Info->indice++;
-	return (i + 1);
+	if (Info->star == NULL)
+		Info->indice -= (Info->size_tab - 1);
+	else
+		Info->indice -= Info->size_tab - (Info->size_star + 1);
 }
 
 static void	ft_get_tab(const char *text, va_list args, t_info *Info)
 {
 	const char	*list_conver;
 	int			i;
-	int	o = 0;
 
 	list_conver = "cspdiuxX%";
 	i = 0;
-	Info->indice -= Info->size_tab - 1;
+	ft_calcul_indice(Info);
 	while (i < Info->size_tab)
 	{
 		if (text[Info->indice] == '*')
@@ -47,16 +39,8 @@ static void	ft_get_tab(const char *text, va_list args, t_info *Info)
 			i++;
 		}
 	}
-	printf("i :%d\n", i);
 	Info->tab[i] = '\0';
 	i = 0;
-	/*
-	while (Info->tab[o])
-	{
-		printf("tab : %c\n", Info->tab[o]);
-		o++;
-	}
-	*/
 	while (list_conver[i])
 	{
 		if (list_conver[i] == Info->tab[Info->size_tab - 1])
@@ -69,7 +53,6 @@ static int	ft_len_tab(const char *text, t_info *Info, va_list args)
 {
 	int	i;
 	int	count;
-	int o = 0;
 
 	i = 1;
 	count = 0;
@@ -99,6 +82,7 @@ static void	ft_init_struct(t_info *Info)
 	Info->zeros = 0;
 	Info->nbr_aff = 0;
 	Info->precision = 0;
+	Info->star = NULL;
 }
 
 int	ft_printf(const char *text, ...)
@@ -126,13 +110,4 @@ int	ft_printf(const char *text, ...)
 	}
 	va_end(args);
 	return (1);
-}
-
-int main()
-{
-	printf("test : %d\n", 152);
-	ft_printf("test : %d\n", 152);
-	printf("----------------\n");
-	printf("test : %*d\n", 0010, 152);
-	ft_printf("test : %*d\n", 0010, 152);
 }
