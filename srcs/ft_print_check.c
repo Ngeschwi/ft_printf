@@ -6,7 +6,7 @@
 /*   By: ngeschwi <ngeschwi@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 10:03:58 by ngeschwi          #+#    #+#             */
-/*   Updated: 2021/04/14 09:28:22 by ngeschwi         ###   ########.fr       */
+/*   Updated: 2021/04/16 13:42:09 by ngeschwi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static int	ft_len_nbr(t_info *Info, int i)
 	return (size);
 }
 
-static void	ft_wich_one(t_info *Info, int i, char *nbr)
+static int	ft_wich_one(t_info *Info, int i, char *nbr)
 {
 	if (Info->tab[i] == '%' && Info->nbr_aff == 0)
 		Info->nbr_aff = ft_atoi(nbr);
@@ -70,6 +70,8 @@ static void	ft_wich_one(t_info *Info, int i, char *nbr)
 			|| Info->tab[Info->size_tab] == 105
 			|| Info->tab[Info->size_tab] == 117)
 			Info->precision = 0;
+	i--;
+	return (i);
 }
 
 int	ft_check_flag(t_info *Info, int i)
@@ -100,11 +102,11 @@ void	ft_check_tab(va_list args, t_info *Info)
 			size_nbr--;
 			i--;
 		}
-		ft_wich_one(Info, i, nbr);
-		i--;
+		i = ft_wich_one(Info, i, nbr);
 		free(nbr);
 	}
 	if (Info->minus == 1 || Info->precision != 0)
-		Info->zeros = 0;
+		if (Info->tab[Info->size_tab - 1] != 37)
+			Info->zeros = 0;
 	ft_which_conver(args, Info);
 }

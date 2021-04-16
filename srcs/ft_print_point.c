@@ -6,7 +6,7 @@
 /*   By: ngeschwi <ngeschwi@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 11:51:13 by ngeschwi          #+#    #+#             */
-/*   Updated: 2021/04/14 08:41:51 by ngeschwi         ###   ########.fr       */
+/*   Updated: 2021/04/16 13:26:38 by ngeschwi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ static int	ft_calcul_diff(t_info *Info, char *point)
 		diff = Info->nbr_aff - Info->nbr_aff;
 	else
 		diff = Info->nbr_aff - (ft_strlen(point) + 2);
+	if (Info->precision == -1 && ft_strlen(point) == 1 && *point == 48)
+		diff++;
 	return (diff);
 }
 
@@ -61,7 +63,8 @@ void	ft_printf_point(t_info *Info, char *point)
 	if (diff > 0)
 		while (diff-- > 0)
 			ft_putchar('0');
-	ft_putstr(point);
+	if ((ft_strlen(point) != 1 && *point != 48) || Info->precision != -1)
+		ft_putstr(point);
 	free(point);
 }
 

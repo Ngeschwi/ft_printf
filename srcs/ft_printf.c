@@ -6,7 +6,7 @@
 /*   By: ngeschwi <ngeschwi@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 09:38:20 by ngeschwi          #+#    #+#             */
-/*   Updated: 2021/04/14 16:53:19 by ngeschwi         ###   ########.fr       */
+/*   Updated: 2021/04/16 15:29:33 by ngeschwi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,10 @@ static int	ft_len_tab(const char *text, t_info *Info, va_list args)
 			Info->star = ft_itoa(va_arg(args, int));
 			Info->size_star = ft_strlen(Info->star);
 			if (!ft_check_star(Info, text))
-				break ;
+			{
+				i++;
+				count = Info->size_star;
+			}
 			while (Info->star[count++])
 				i++;
 			i--;
@@ -94,6 +97,7 @@ int	ft_printf(const char *text, ...)
 {
 	va_list		args;
 	t_info		Info;
+	int			len_tab;
 
 	ft_init_struct(&Info);
 	Info.indice = 0;
@@ -102,8 +106,9 @@ int	ft_printf(const char *text, ...)
 	{
 		if (text[Info.indice] == '%')
 		{
-			printf("%d\n", Info.indice);
-			Info.tab = malloc(sizeof(char) * (ft_len_tab(text, &Info, args) + 1));
+			Info.indice++;
+			len_tab = ft_len_tab(text, &Info, args);
+			Info.tab = malloc(sizeof(char) * (len_tab + 1));
 			ft_get_tab(text, args, &Info);
 			Info.indice--;
 			free(Info.tab);
@@ -116,9 +121,10 @@ int	ft_printf(const char *text, ...)
 	va_end(args);
 	return (1);
 }
-
-int	main()
+/*
+int main()
 {
-	printf("{%.*d}\n", -5, 42);
-	ft_printf("{%.*d}\n", -5, 42);
+	printf("|%-100.108s|%0022.*u|\n", "r>KM,cWZ,k7U", -75, 1057557429u);
+	ft_printf("|%-100.108s|%0022.*u|\n", "r>KM,cWZ,k7U", -75, 1057557429u);
 }
+*/
