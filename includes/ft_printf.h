@@ -17,15 +17,12 @@ typedef struct s_info
 	int			zeros;
 	int			nbr_aff;
 	int			precision;
-	int			error_star;
 }				t_info;
 
 int		ft_printf(const char *text, ...) __attribute__ ((format(printf, 1, 2)));
 void	ft_check_tab(va_list args, t_info *Info);
-int		ft_check_star(t_info *Info, const char *text);
-int		ft_replace_star(t_info *Info, int i);
+char	*ft_replace_in_text(t_info *Info, va_list args);
 
-void	ft_which_conver(va_list args, t_info *Info);
 void	ft_check_carac(va_list args, t_info *Info);
 void	ft_check_hexa(va_list args, t_info *Info);
 void	ft_check_int(va_list args, t_info *Info);
@@ -42,5 +39,8 @@ int		ft_isdigit(char c);
 int		ft_isalpha(int c);
 char	*ft_reduce_tab(char *nbr);
 char	*ft_base_hexa(unsigned int nbr, char *base);
+char	**ft_split(char const *s, char c);
+char	*ft_strjoin(const char *s1, const char *s2);
+char	*ft_strdup(char *src);
 
 #endif

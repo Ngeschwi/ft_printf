@@ -6,13 +6,13 @@
 /*   By: ngeschwi <ngeschwi@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 11:00:10 by ngeschwi          #+#    #+#             */
-/*   Updated: 2021/04/14 14:45:18 by ngeschwi         ###   ########.fr       */
+/*   Updated: 2021/04/17 15:24:30 by ngeschwi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-void	ft_printf_carac(t_info *Info, char *text)
+static void	ft_printf_carac(t_info *Info, char *text)
 {
 	int	i;
 
@@ -36,7 +36,7 @@ void	ft_printf_carac(t_info *Info, char *text)
 	}
 }
 
-void	ft_print_carac_minus(t_info *Info, int diff, char *text)
+static void	ft_print_carac_minus(t_info *Info, int diff, char *text)
 {
 	if (Info->zeros == 1)
 		while (diff-- > 0)
@@ -47,7 +47,7 @@ void	ft_print_carac_minus(t_info *Info, int diff, char *text)
 	ft_printf_carac(Info, text);
 }
 
-int	ft_calcul_diff(t_info *Info, char *text)
+static int	ft_calcul_diff(t_info *Info, char *text)
 {
 	int	diff;
 

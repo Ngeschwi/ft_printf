@@ -6,7 +6,7 @@
 /*   By: ngeschwi <ngeschwi@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 11:38:47 by ngeschwi          #+#    #+#             */
-/*   Updated: 2021/04/15 09:48:52 by ngeschwi         ###   ########.fr       */
+/*   Updated: 2021/04/17 15:24:42 by ngeschwi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int	ft_calcul_diff(t_info *Info, char *nbr)
 	return (diff);
 }
 
-void	ft_printf_int(t_info *Info, char *nbr)
+static void	ft_printf_int(t_info *Info, char *nbr)
 {
 	int		diff;
 
@@ -49,7 +49,7 @@ void	ft_printf_int(t_info *Info, char *nbr)
 	free(nbr);
 }
 
-void	ft_print_int_minus(t_info *Info, int diff, char *nbr)
+static void	ft_print_int_minus(t_info *Info, int diff, char *nbr)
 {
 	if (Info->zeros == 1)
 	{

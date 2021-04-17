@@ -6,7 +6,7 @@
 #    By: ngeschwi <ngeschwi@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/26 12:03:34 by ngeschwi          #+#    #+#              #
-#    Updated: 2021/04/14 14:48:53 by ngeschwi         ###   ########.fr        #
+#    Updated: 2021/04/17 13:52:58 by ngeschwi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,10 @@ SRCS	= srcs/ft_printf.c \
 			srcs/ft_utoa.c \
 			srcs/ft_reduce_tab.c \
 			srcs/ft_print_pc.c \
-			srcs/ft_check_star.c 
+			srcs/ft_replace_in_text.c \
+			srcs/ft_strjoin.c \
+			srcs/ft_split.c \
+			srcs/ft_strdup.c
 
 OBJS	= $(SRCS:.c=.o)
 

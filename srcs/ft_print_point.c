@@ -6,13 +6,13 @@
 /*   By: ngeschwi <ngeschwi@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 11:51:13 by ngeschwi          #+#    #+#             */
-/*   Updated: 2021/04/16 13:26:38 by ngeschwi         ###   ########.fr       */
+/*   Updated: 2021/04/17 15:24:58 by ngeschwi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-char	*ft_ull_base(unsigned long long ull)
+static char	*ft_ull_base(unsigned long long ull)
 {
 	char				*val_rtn;
 	unsigned long long	ull_save;
@@ -53,7 +53,7 @@ static int	ft_calcul_diff(t_info *Info, char *point)
 	return (diff);
 }
 
-void	ft_printf_point(t_info *Info, char *point)
+static void	ft_printf_point(t_info *Info, char *point)
 {
 	int	diff;
 
@@ -68,7 +68,7 @@ void	ft_printf_point(t_info *Info, char *point)
 	free(point);
 }
 
-void	ft_print_point_minus(t_info *Info, int diff, char *point)
+static void	ft_print_point_minus(t_info *Info, int diff, char *point)
 {
 	if (Info->zeros == 1)
 	{

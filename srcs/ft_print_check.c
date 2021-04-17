@@ -6,13 +6,13 @@
 /*   By: ngeschwi <ngeschwi@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 10:03:58 by ngeschwi          #+#    #+#             */
-/*   Updated: 2021/04/16 13:42:09 by ngeschwi         ###   ########.fr       */
+/*   Updated: 2021/04/17 15:23:24 by ngeschwi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-void	ft_which_conver(va_list args, t_info *Info)
+static void	ft_which_conver(va_list args, t_info *Info)
 {
 	if (Info->tab[Info->size_tab - 1] == 99)
 		ft_check_carac(args, Info);
@@ -74,7 +74,7 @@ static int	ft_wich_one(t_info *Info, int i, char *nbr)
 	return (i);
 }
 
-int	ft_check_flag(t_info *Info, int i)
+static int	ft_check_flag(t_info *Info, int i)
 {
 	if (Info->tab[i] == '.' && Info->precision == 0)
 		Info->precision = -1;

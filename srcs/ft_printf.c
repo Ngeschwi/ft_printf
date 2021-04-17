@@ -6,43 +6,32 @@
 /*   By: ngeschwi <ngeschwi@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 09:38:20 by ngeschwi          #+#    #+#             */
-/*   Updated: 2021/04/16 15:29:33 by ngeschwi         ###   ########.fr       */
+/*   Updated: 2021/04/17 15:15:57 by ngeschwi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-static void	ft_calcul_indice(t_info *Info)
-{
-	if (Info->star == NULL)
-		Info->indice -= (Info->size_tab - 1);
-	else if (Info->error_star == 0)
-		Info->indice -= Info->size_tab - Info->size_star;
-	else
-		Info->indice -= Info->size_tab + 1;
-}
-
 static void	ft_get_tab(const char *text, va_list args, t_info *Info)
 {
 	const char	*list_conver;
+	char		*new_tab;
 	int			i;
 
 	list_conver = "cspdiuxX%";
 	i = 0;
-	ft_calcul_indice(Info);
-	while (i < (Info->size_tab + Info->error_star))
+	Info->indice -= (Info->size_tab - 1);
+	while (i < Info->size_tab)
 	{
-		if (text[Info->indice] == '*')
-			i = ft_replace_star(Info, i);
-		else
-		{
-			Info->tab[i] = text[Info->indice];
-			Info->indice++;
-			i++;
-		}
+		Info->tab[i] = text[Info->indice];
+		Info->indice++;
+		i++;
 	}
 	Info->tab[i] = '\0';
 	i = 0;
+	new_tab = ft_replace_in_text(Info, args);
+	Info->tab = ft_strdup(new_tab);
+	Info->size_tab = ft_strlen(Info->tab);
 	while (list_conver[i])
 	{
 		if (list_conver[i] == Info->tab[Info->size_tab - 1])
@@ -51,10 +40,10 @@ static void	ft_get_tab(const char *text, va_list args, t_info *Info)
 	}
 }
 
-static int	ft_len_tab(const char *text, t_info *Info, va_list args)
+static int	ft_len_tab(const char *text, t_info *Info)
 {
-	int	i;
-	int	count;
+	int		i;
+	int		count;
 
 	i = 1;
 	while (text[Info->indice] && !ft_isalpha(text[Info->indice]))
@@ -62,19 +51,6 @@ static int	ft_len_tab(const char *text, t_info *Info, va_list args)
 		count = 0;
 		if (text[Info->indice] == '%')
 			break ;
-		if (text[Info->indice] == '*')
-		{
-			Info->star = ft_itoa(va_arg(args, int));
-			Info->size_star = ft_strlen(Info->star);
-			if (!ft_check_star(Info, text))
-			{
-				i++;
-				count = Info->size_star;
-			}
-			while (Info->star[count++])
-				i++;
-			i--;
-		}
 		i++;
 		Info->indice++;
 	}
@@ -89,7 +65,6 @@ static void	ft_init_struct(t_info *Info)
 	Info->zeros = 0;
 	Info->nbr_aff = 0;
 	Info->precision = 0;
-	Info->error_star = 0;
 	Info->star = NULL;
 }
 
@@ -97,7 +72,6 @@ int	ft_printf(const char *text, ...)
 {
 	va_list		args;
 	t_info		Info;
-	int			len_tab;
 
 	ft_init_struct(&Info);
 	Info.indice = 0;
@@ -107,8 +81,7 @@ int	ft_printf(const char *text, ...)
 		if (text[Info.indice] == '%')
 		{
 			Info.indice++;
-			len_tab = ft_len_tab(text, &Info, args);
-			Info.tab = malloc(sizeof(char) * (len_tab + 1));
+			Info.tab = malloc(sizeof(char) * (ft_len_tab(text, &Info) + 1));
 			ft_get_tab(text, args, &Info);
 			Info.indice--;
 			free(Info.tab);
@@ -121,10 +94,3 @@ int	ft_printf(const char *text, ...)
 	va_end(args);
 	return (1);
 }
-/*
-int main()
-{
-	printf("|%-100.108s|%0022.*u|\n", "r>KM,cWZ,k7U", -75, 1057557429u);
-	ft_printf("|%-100.108s|%0022.*u|\n", "r>KM,cWZ,k7U", -75, 1057557429u);
-}
-*/
