@@ -6,7 +6,7 @@
 /*   By: ngeschwi <ngeschwi@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 09:38:20 by ngeschwi          #+#    #+#             */
-/*   Updated: 2021/04/17 15:15:57 by ngeschwi         ###   ########.fr       */
+/*   Updated: 2021/04/20 16:56:49 by ngeschwi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 static void	ft_get_tab(const char *text, va_list args, t_info *Info)
 {
 	const char	*list_conver;
-	char		*new_tab;
 	int			i;
 
 	list_conver = "cspdiuxX%";
@@ -29,8 +28,7 @@ static void	ft_get_tab(const char *text, va_list args, t_info *Info)
 	}
 	Info->tab[i] = '\0';
 	i = 0;
-	new_tab = ft_replace_in_text(Info, args);
-	Info->tab = ft_strdup(new_tab);
+	ft_replace_in_text(Info, args);
 	Info->size_tab = ft_strlen(Info->tab);
 	while (list_conver[i])
 	{
@@ -93,4 +91,10 @@ int	ft_printf(const char *text, ...)
 	}
 	va_end(args);
 	return (1);
+}
+
+int	main()
+{
+	ft_printf("%*.*d\n", 20, 10, 42);
+	while (1);
 }

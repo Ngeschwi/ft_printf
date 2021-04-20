@@ -6,7 +6,7 @@
 /*   By: ngeschwi <ngeschwi@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/20 16:35:58 by ngeschwi          #+#    #+#             */
-/*   Updated: 2021/04/17 13:53:13 by ngeschwi         ###   ########.fr       */
+/*   Updated: 2021/04/20 16:29:37 by ngeschwi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ char	*ft_strdup(char *src)
 		copy[i] = src[i];
 		i++;
 	}
-	if (size_src != 0)
-		copy[i] = '\0';
+	copy[i] = '\0';
 	return (copy);
 }

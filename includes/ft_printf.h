@@ -10,7 +10,6 @@ typedef struct s_info
 {
 	char		*tab;
 	char		*star;
-	int			size_star;
 	int			size_tab;
 	int			indice;
 	int			minus;
@@ -21,7 +20,7 @@ typedef struct s_info
 
 int		ft_printf(const char *text, ...) __attribute__ ((format(printf, 1, 2)));
 void	ft_check_tab(va_list args, t_info *Info);
-char	*ft_replace_in_text(t_info *Info, va_list args);
+void	ft_replace_in_text(t_info *Info, va_list args);
 
 void	ft_check_carac(va_list args, t_info *Info);
 void	ft_check_hexa(va_list args, t_info *Info);
