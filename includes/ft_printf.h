@@ -9,6 +9,8 @@
 typedef struct s_info
 {
 	char		*tab;
+	char		*new_tab;
+	char		**split_tab;
 	char		*star;
 	int			size_tab;
 	int			indice;
@@ -39,7 +41,7 @@ int		ft_isalpha(int c);
 char	*ft_reduce_tab(char *nbr);
 char	*ft_base_hexa(unsigned int nbr, char *base);
 char	**ft_split(char const *s, char c);
-char	*ft_strjoin(const char *s1, const char *s2);
+char	*ft_strjoin(const char *s1, const char *s2, t_info *Info);
 char	*ft_strdup(char *src);
 
 #endif

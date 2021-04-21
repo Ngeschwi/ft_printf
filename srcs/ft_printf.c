@@ -6,7 +6,7 @@
 /*   By: ngeschwi <ngeschwi@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 09:38:20 by ngeschwi          #+#    #+#             */
-/*   Updated: 2021/04/20 16:56:49 by ngeschwi         ###   ########.fr       */
+/*   Updated: 2021/04/21 10:50:34 by ngeschwi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ static void	ft_init_struct(t_info *Info)
 	Info->nbr_aff = 0;
 	Info->precision = 0;
 	Info->star = NULL;
+	Info->new_tab = NULL;
+	Info->split_tab = NULL;
 }
 
 int	ft_printf(const char *text, ...)
@@ -91,10 +93,4 @@ int	ft_printf(const char *text, ...)
 	}
 	va_end(args);
 	return (1);
-}
-
-int	main()
-{
-	ft_printf("%*.*d\n", 20, 10, 42);
-	while (1);
 }
