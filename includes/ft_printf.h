@@ -18,6 +18,7 @@ typedef struct s_info
 	int			zeros;
 	int			nbr_aff;
 	int			precision;
+	int			nbr_final;
 }				t_info;
 
 int		ft_printf(const char *text, ...) __attribute__ ((format(printf, 1, 2)));
@@ -33,8 +34,8 @@ void	ft_printf_pc(t_info *Info);
 char	*ft_itoa(int n);
 char	*ft_utoa(unsigned int n);
 int		ft_atoi(const char *str);
-void	ft_putchar(char c);
-void	ft_putstr(char *str);
+void	ft_putchar(char c, t_info *Info);
+void	ft_putstr(char *str, t_info *Info);
 int		ft_strlen(const char *str);
 int		ft_isdigit(char c);
 int		ft_isalpha(int c);

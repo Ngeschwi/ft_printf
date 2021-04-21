@@ -6,7 +6,7 @@
 /*   By: ngeschwi <ngeschwi@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 11:00:10 by ngeschwi          #+#    #+#             */
-/*   Updated: 2021/04/17 15:24:30 by ngeschwi         ###   ########.fr       */
+/*   Updated: 2021/04/21 14:57:15 by ngeschwi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,21 @@ static void	ft_printf_carac(t_info *Info, char *text)
 
 	i = 0;
 	if (Info->tab[Info->size_tab - 1] == 99)
-		ft_putchar((char)text);
+		ft_putchar((char)text, Info);
 	else
 	{
 		if (Info->precision > 0)
 		{
 			while (i < ft_strlen(text) && i < Info->precision)
 			{
-				ft_putchar((char)text[i]);
+				ft_putchar((char)text[i], Info);
 				i++;
 			}
 		}
 		else if (Info->precision == -1)
 			return ;
 		else
-			ft_putstr(text);
+			ft_putstr(text, Info);
 	}
 }
 
@@ -40,10 +40,10 @@ static void	ft_print_carac_minus(t_info *Info, int diff, char *text)
 {
 	if (Info->zeros == 1)
 		while (diff-- > 0)
-			ft_putchar('0');
+			ft_putchar('0', Info);
 	else
 		while (diff-- > 0)
-			ft_putchar(' ');
+			ft_putchar(' ', Info);
 	ft_printf_carac(Info, text);
 }
 
@@ -89,7 +89,7 @@ void	ft_check_carac(va_list args, t_info *Info)
 		{
 			ft_printf_carac(Info, text);
 			while (diff-- > 0)
-				ft_putchar(' ');
+				ft_putchar(' ', Info);
 		}
 	}
 }

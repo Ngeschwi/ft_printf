@@ -6,13 +6,14 @@
 /*   By: ngeschwi <ngeschwi@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/12 15:50:04 by ngeschwi          #+#    #+#             */
-/*   Updated: 2021/03/30 09:47:38 by ngeschwi         ###   ########.fr       */
+/*   Updated: 2021/04/21 14:55:51 by ngeschwi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-void	ft_putchar(char c)
+void	ft_putchar(char c, t_info *Info)
 {
+	Info->nbr_final++;
 	write(1, &c, 1);
 }

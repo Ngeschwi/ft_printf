@@ -6,7 +6,7 @@
 /*   By: ngeschwi <ngeschwi@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 11:51:13 by ngeschwi          #+#    #+#             */
-/*   Updated: 2021/04/17 15:24:58 by ngeschwi         ###   ########.fr       */
+/*   Updated: 2021/04/21 14:58:17 by ngeschwi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,12 +59,12 @@ static void	ft_printf_point(t_info *Info, char *point)
 
 	diff = Info->precision - ft_strlen(point);
 	if (Info->zeros == 0)
-		ft_putstr("0x");
+		ft_putstr("0x", Info);
 	if (diff > 0)
 		while (diff-- > 0)
-			ft_putchar('0');
+			ft_putchar('0', Info);
 	if ((ft_strlen(point) != 1 && *point != 48) || Info->precision != -1)
-		ft_putstr(point);
+		ft_putstr(point, Info);
 	free(point);
 }
 
@@ -72,13 +72,13 @@ static void	ft_print_point_minus(t_info *Info, int diff, char *point)
 {
 	if (Info->zeros == 1)
 	{
-		ft_putstr("0x");
+		ft_putstr("0x", Info);
 		while (diff-- > 0)
-			ft_putchar('0');
+			ft_putchar('0', Info);
 	}
 	else
 		while (diff-- > 0)
-			ft_putchar(' ');
+			ft_putchar(' ', Info);
 	ft_printf_point(Info, point);
 }
 
@@ -101,7 +101,7 @@ void	ft_check_point(va_list args, t_info *Info)
 		{
 			ft_printf_point(Info, point);
 			while (diff-- > 0)
-				ft_putchar(' ');
+				ft_putchar(' ', Info);
 		}
 	}
 }

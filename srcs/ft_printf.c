@@ -6,7 +6,7 @@
 /*   By: ngeschwi <ngeschwi@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 09:38:20 by ngeschwi          #+#    #+#             */
-/*   Updated: 2021/04/21 10:50:34 by ngeschwi         ###   ########.fr       */
+/*   Updated: 2021/04/21 15:33:59 by ngeschwi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ int	ft_printf(const char *text, ...)
 
 	ft_init_struct(&Info);
 	Info.indice = 0;
+	Info.nbr_final = 0;
 	va_start(args, text);
 	while (text[Info.indice])
 	{
@@ -88,9 +89,9 @@ int	ft_printf(const char *text, ...)
 			ft_init_struct(&Info);
 		}
 		else
-			ft_putchar(text[Info.indice]);
+			ft_putchar(text[Info.indice], &Info);
 		Info.indice++;
 	}
 	va_end(args);
-	return (1);
+	return (Info.nbr_final);
 }

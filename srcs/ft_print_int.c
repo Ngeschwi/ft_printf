@@ -6,7 +6,7 @@
 /*   By: ngeschwi <ngeschwi@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 11:38:47 by ngeschwi          #+#    #+#             */
-/*   Updated: 2021/04/17 15:24:42 by ngeschwi         ###   ########.fr       */
+/*   Updated: 2021/04/21 15:25:31 by ngeschwi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,20 +32,27 @@ static int	ft_calcul_diff(t_info *Info, char *nbr)
 static void	ft_printf_int(t_info *Info, char *nbr)
 {
 	int		diff;
+	char	*nbr_save;
 
 	if (nbr[0] == '-')
 	{
-		nbr = ft_reduce_tab(nbr);
+		nbr_save = ft_reduce_tab(nbr);
+		free(nbr);
+		nbr = ft_strdup(nbr_save);
+		free(nbr_save);
 		if (!(Info->zeros == 1 && Info->nbr_aff != 0))
-			ft_putchar('-');
+			ft_putchar('-', Info);
 	}
 	if (Info->precision == -1 && nbr[0] == '0')
+	{
+		free(nbr);
 		return ;
+	}
 	diff = Info->precision - ft_strlen(nbr);
 	if (diff > 0)
 		while (diff-- > 0)
-			ft_putchar('0');
-	ft_putstr(nbr);
+			ft_putchar('0', Info);
+	ft_putstr(nbr, Info);
 	free(nbr);
 }
 
@@ -55,15 +62,15 @@ static void	ft_print_int_minus(t_info *Info, int diff, char *nbr)
 	{
 		if (nbr[0] == '-')
 		{
-			ft_putchar('-');
+			ft_putchar('-', Info);
 			diff++;
 		}
 		while (diff-- > 0)
-			ft_putchar('0');
+			ft_putchar('0', Info);
 	}
 	else
 		while (diff-- > 0)
-			ft_putchar(' ');
+			ft_putchar(' ', Info);
 	ft_printf_int(Info, nbr);
 }
 
@@ -87,7 +94,7 @@ void	ft_check_int(va_list args, t_info *Info)
 		{
 			ft_printf_int(Info, nbr);
 			while (diff-- > 0)
-				ft_putchar(' ');
+				ft_putchar(' ', Info);
 		}
 	}
 }

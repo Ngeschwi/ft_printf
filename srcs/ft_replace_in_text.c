@@ -6,13 +6,13 @@
 /*   By: ngeschwi <ngeschwi@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/16 15:37:52 by ngeschwi          #+#    #+#             */
-/*   Updated: 2021/04/21 10:29:55 by ngeschwi         ###   ########.fr       */
+/*   Updated: 2021/04/21 15:10:15 by ngeschwi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-static char	*ft_remove_point(char *tab)
+static char	*ft_remove_point(char *tab, t_info *Info)
 {
 	char	*new_tab;
 	int		size_tab;
@@ -27,6 +27,7 @@ static char	*ft_remove_point(char *tab)
 		i++;
 	}
 	new_tab[i] = '\0';
+	free(Info->new_tab);
 	return (new_tab);
 }
 
@@ -67,7 +68,7 @@ void	ft_replace_in_text(t_info *Info, va_list args)
 		Info->star = ft_itoa(va_arg(args, int));
 		if (Info->split_tab[i][len_split_tab - 1] == '.'
 			&& Info->star[0] == '-')
-			Info->new_tab = ft_remove_point(Info->new_tab);
+			Info->new_tab = ft_remove_point(Info->new_tab, Info);
 		else
 			Info->new_tab = ft_strjoin(Info->new_tab, Info->star, Info);
 		i++;
