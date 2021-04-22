@@ -6,7 +6,7 @@
 #    By: ngeschwi <ngeschwi@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/26 12:03:34 by ngeschwi          #+#    #+#              #
-#    Updated: 2021/04/19 10:03:47 by ngeschwi         ###   ########.fr        #
+#    Updated: 2021/04/22 10:15:46 by ngeschwi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,8 @@ SRCS	= srcs/ft_printf.c \
 			srcs/ft_replace_in_text.c \
 			srcs/ft_strjoin.c \
 			srcs/ft_split.c \
-			srcs/ft_strdup.c
+			srcs/ft_strdup.c \
+			srcs/ft_malloc.c
 
 OBJS	= $(SRCS:.c=.o)
 
@@ -38,7 +39,7 @@ NAME	= libftprintf.a
 
 CC		= gcc
 RM		= rm -f
-CFLAGS	= -Wall -Wextra -Werror
+CFLAGS	= -g3
 .c.o:
 		${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 

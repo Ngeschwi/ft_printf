@@ -6,7 +6,7 @@
 /*   By: ngeschwi <ngeschwi@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/06 12:02:08 by ngeschwi          #+#    #+#             */
-/*   Updated: 2021/03/25 10:09:30 by ngeschwi         ###   ########.fr       */
+/*   Updated: 2021/04/22 10:05:10 by ngeschwi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ char	*ft_itoa(int n)
 
 	size_int = ft_size_n(n);
 	str = malloc(sizeof(char) * size_int + 1);
-	if (str == NULL)
+	if (!str)
 		return (NULL);
 	ft_recursive(n, str, size_int - 1);
 	str[size_int] = '\0';

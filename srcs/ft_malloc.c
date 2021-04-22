@@ -1,32 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_reduce_tab.c                                    :+:      :+:    :+:   */
+/*   ft_malloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngeschwi <ngeschwi@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/30 12:07:11 by ngeschwi          #+#    #+#             */
-/*   Updated: 2021/04/22 10:06:27 by ngeschwi         ###   ########.fr       */
+/*   Created: 2021/04/22 10:12:57 by ngeschwi          #+#    #+#             */
+/*   Updated: 2021/04/22 10:16:11 by ngeschwi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-char	*ft_reduce_tab(char *nbr)
+char	*ft_malloc(int size)
 {
-	int		size_nbr;
-	int		i;
-	char	*new_nbr;
+	char	*str;
 
-	i = 1;
-	size_nbr = ft_strlen(nbr);
-	new_nbr = malloc(sizeof(char) * size_nbr);
-	if (!new_nbr)
+	str = malloc(sizeof(char) * (size));
+	if (!str)
 		return (NULL);
-	while (i <= size_nbr)
-	{
-		new_nbr[i - 1] = nbr[i];
-		i++;
-	}
-	return (new_nbr);
+	return (str);
 }

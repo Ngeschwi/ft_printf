@@ -6,7 +6,7 @@
 /*   By: ngeschwi <ngeschwi@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/16 15:37:52 by ngeschwi          #+#    #+#             */
-/*   Updated: 2021/04/21 15:10:15 by ngeschwi         ###   ########.fr       */
+/*   Updated: 2021/04/22 10:14:01 by ngeschwi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ static char	*ft_remove_point(char *tab, t_info *Info)
 	i = 0;
 	size_tab = ft_strlen(tab);
 	new_tab = malloc(sizeof(char) * size_tab);
+	if (!new_tab)
+		return (NULL);
 	while (i < size_tab - 1)
 	{
 		new_tab[i] = tab[i];

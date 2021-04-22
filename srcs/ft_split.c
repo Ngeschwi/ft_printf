@@ -6,7 +6,7 @@
 /*   By: ngeschwi <ngeschwi@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/22 11:26:24 by ngeschwi          #+#    #+#             */
-/*   Updated: 2021/04/17 15:19:25 by ngeschwi         ###   ########.fr       */
+/*   Updated: 2021/04/22 10:07:38 by ngeschwi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ char	**ft_split(char const *s, char c)
 	i = 0;
 	j = 0;
 	tab = malloc(sizeof(char *) * (count_word(s, c) + 1));
+	if (!tab)
+		return (NULL);
 	while (j < count_word(s, c))
 	{
 		k = 0;

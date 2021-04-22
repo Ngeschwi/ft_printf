@@ -6,7 +6,7 @@
 /*   By: ngeschwi <ngeschwi@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/19 09:37:11 by ngeschwi          #+#    #+#             */
-/*   Updated: 2021/03/31 09:04:28 by ngeschwi         ###   ########.fr       */
+/*   Updated: 2021/04/22 10:04:59 by ngeschwi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ char	*ft_base_hexa(unsigned int nbr, char *base)
 
 	size_int = ft_nbrlen(nbr);
 	str = malloc(sizeof(int) * size_int);
-	if (str == NULL)
+	if (!str)
 		return (NULL);
 	recursive(nbr, str, size_int, base);
 	str[size_int] = '\0';

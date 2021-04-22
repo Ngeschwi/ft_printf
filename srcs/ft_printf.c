@@ -6,7 +6,7 @@
 /*   By: ngeschwi <ngeschwi@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 09:38:20 by ngeschwi          #+#    #+#             */
-/*   Updated: 2021/04/21 15:33:59 by ngeschwi         ###   ########.fr       */
+/*   Updated: 2021/04/22 10:16:59 by ngeschwi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int	ft_printf(const char *text, ...)
 		if (text[Info.indice] == '%')
 		{
 			Info.indice++;
-			Info.tab = malloc(sizeof(char) * (ft_len_tab(text, &Info) + 1));
+			Info.tab = ft_malloc(ft_len_tab(text, &Info) + 1);
 			ft_get_tab(text, args, &Info);
 			Info.indice--;
 			free(Info.tab);
