@@ -6,7 +6,7 @@
 /*   By: ngeschwi <ngeschwi@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/22 11:26:24 by ngeschwi          #+#    #+#             */
-/*   Updated: 2021/04/22 10:07:38 by ngeschwi         ###   ########.fr       */
+/*   Updated: 2021/04/22 15:42:22 by ngeschwi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ char	**ft_split(char const *s, char c)
 	int		i;
 	int		j;
 	int		k;
+	int		count;
 
 	if (!s)
 		return (NULL);
@@ -70,9 +71,7 @@ char	**ft_split(char const *s, char c)
 	while (j < count_word(s, c))
 	{
 		k = 0;
-		tab[j] = malloc(sizeof(char) * (size_word(s, c, i) + 1));
-		if (tab[j] == NULL)
-			return ((char **)free_tab(tab, j));
+		tab[j] = ft_malloc(size_word(s, c, i) + 1);
 		while (s[i] && s[i] == c)
 			i++;
 		while (s[i] && s[i] != c)
