@@ -6,11 +6,11 @@
 /*   By: ngeschwi <ngeschwi@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 12:07:11 by ngeschwi          #+#    #+#             */
-/*   Updated: 2021/04/22 10:06:27 by ngeschwi         ###   ########.fr       */
+/*   Updated: 2021/04/26 12:03:06 by ngeschwi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "ft_printf.h"
 
 char	*ft_reduce_tab(char *nbr)
 {

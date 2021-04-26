@@ -6,7 +6,7 @@
 #    By: ngeschwi <ngeschwi@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/26 12:03:34 by ngeschwi          #+#    #+#              #
-#    Updated: 2021/04/22 10:15:46 by ngeschwi         ###   ########.fr        #
+#    Updated: 2021/04/26 14:43:45 by ngeschwi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,8 +30,7 @@ SRCS	= srcs/ft_printf.c \
 			srcs/ft_replace_in_text.c \
 			srcs/ft_strjoin.c \
 			srcs/ft_split.c \
-			srcs/ft_strdup.c \
-			srcs/ft_malloc.c
+			srcs/ft_strdup.c
 
 OBJS	= $(SRCS:.c=.o)
 
@@ -41,7 +40,7 @@ CC		= gcc
 RM		= rm -f
 CFLAGS	= -g3
 .c.o:
-		${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
+		${CC} ${CFLAGS} -c -I./includes $< -o ${<:.c=.o}
 
 $(NAME):	$(OBJS)
 		ar rcs $(NAME) $(OBJS)

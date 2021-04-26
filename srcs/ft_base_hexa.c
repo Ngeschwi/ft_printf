@@ -6,11 +6,11 @@
 /*   By: ngeschwi <ngeschwi@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/19 09:37:11 by ngeschwi          #+#    #+#             */
-/*   Updated: 2021/04/22 10:04:59 by ngeschwi         ###   ########.fr       */
+/*   Updated: 2021/04/26 12:03:06 by ngeschwi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "ft_printf.h"
 
 static void	recursive(unsigned int nbr, char *str, int size_int, char *base)
 {

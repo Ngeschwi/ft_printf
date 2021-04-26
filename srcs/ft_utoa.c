@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_utoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ngeschwi <ngeschwi@stutent.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: ngeschwi <ngeschwi@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 09:53:18 by ngeschwi          #+#    #+#             */
-/*   Updated: 2021/03/27 16:08:58 by ngeschwi         ###   ########.fr       */
+/*   Updated: 2021/04/26 12:03:06 by ngeschwi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "ft_printf.h"
 
 static int	ft_size_n(unsigned int n)
 {

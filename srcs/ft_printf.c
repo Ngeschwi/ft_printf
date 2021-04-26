@@ -6,11 +6,11 @@
 /*   By: ngeschwi <ngeschwi@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 09:38:20 by ngeschwi          #+#    #+#             */
-/*   Updated: 2021/04/22 10:16:59 by ngeschwi         ###   ########.fr       */
+/*   Updated: 2021/04/26 14:38:30 by ngeschwi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "ft_printf.h"
 
 static void	ft_get_tab(const char *text, va_list args, t_info *Info)
 {
@@ -56,7 +56,7 @@ static int	ft_len_tab(const char *text, t_info *Info)
 	return (Info->size_tab);
 }
 
-static void	ft_init_struct(t_info *Info)
+static void	ft_init_struct(t_info *Info, int check)
 {
 	Info->size_tab = 0;
 	Info->minus = 0;
@@ -66,6 +66,11 @@ static void	ft_init_struct(t_info *Info)
 	Info->star = NULL;
 	Info->new_tab = NULL;
 	Info->split_tab = NULL;
+	if (check)
+	{
+		Info->nbr_final = 0;
+		Info->indice = 0;
+	}
 }
 
 int	ft_printf(const char *text, ...)
@@ -73,20 +78,20 @@ int	ft_printf(const char *text, ...)
 	va_list		args;
 	t_info		Info;
 
-	ft_init_struct(&Info);
-	Info.indice = 0;
-	Info.nbr_final = 0;
+	ft_init_struct(&Info, 1);
 	va_start(args, text);
 	while (text[Info.indice])
 	{
 		if (text[Info.indice] == '%')
 		{
 			Info.indice++;
-			Info.tab = ft_malloc(ft_len_tab(text, &Info) + 1);
+			Info.tab = malloc(sizeof(char) * (ft_len_tab(text, &Info) + 1));
+			if (!Info.tab)
+				break ;
 			ft_get_tab(text, args, &Info);
 			Info.indice--;
 			free(Info.tab);
-			ft_init_struct(&Info);
+			ft_init_struct(&Info, 0);
 		}
 		else
 			ft_putchar(text[Info.indice], &Info);

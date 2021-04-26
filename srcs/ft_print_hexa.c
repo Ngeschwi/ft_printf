@@ -6,11 +6,11 @@
 /*   By: ngeschwi <ngeschwi@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 11:50:48 by ngeschwi          #+#    #+#             */
-/*   Updated: 2021/04/21 15:29:36 by ngeschwi         ###   ########.fr       */
+/*   Updated: 2021/04/26 12:03:06 by ngeschwi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "ft_printf.h"
 
 static int	ft_calcul_diff(t_info *Info, char *nbr)
 {

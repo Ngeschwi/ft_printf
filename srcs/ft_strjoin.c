@@ -6,11 +6,11 @@
 /*   By: ngeschwi <ngeschwi@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 16:48:40 by ngeschwi          #+#    #+#             */
-/*   Updated: 2021/04/21 10:20:07 by ngeschwi         ###   ########.fr       */
+/*   Updated: 2021/04/26 12:03:06 by ngeschwi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "ft_printf.h"
 
 char	*ft_strjoin(const char *s1, const char *s2, t_info *Info)
 {

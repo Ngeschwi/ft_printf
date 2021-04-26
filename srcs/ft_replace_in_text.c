@@ -6,11 +6,11 @@
 /*   By: ngeschwi <ngeschwi@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/16 15:37:52 by ngeschwi          #+#    #+#             */
-/*   Updated: 2021/04/22 10:14:01 by ngeschwi         ###   ########.fr       */
+/*   Updated: 2021/04/26 12:00:20 by ngeschwi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "ft_printf.h"
 
 static char	*ft_remove_point(char *tab, t_info *Info)
 {

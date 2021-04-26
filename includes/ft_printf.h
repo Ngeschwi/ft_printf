@@ -31,8 +31,6 @@ void	ft_check_int(va_list args, t_info *Info);
 void	ft_check_point(va_list args, t_info *Info);
 void	ft_printf_pc(t_info *Info);
 
-char	*ft_malloc(int size);
-
 char	*ft_itoa(int n);
 char	*ft_utoa(unsigned int n);
 int		ft_atoi(const char *str);

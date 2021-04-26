@@ -6,11 +6,11 @@
 /*   By: ngeschwi <ngeschwi@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 10:03:58 by ngeschwi          #+#    #+#             */
-/*   Updated: 2021/04/22 10:16:27 by ngeschwi         ###   ########.fr       */
+/*   Updated: 2021/04/26 14:43:14 by ngeschwi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "ft_printf.h"
 
 static void	ft_which_conver(va_list args, t_info *Info)
 {
@@ -94,7 +94,7 @@ void	ft_check_tab(va_list args, t_info *Info)
 		while (!ft_isdigit(Info->tab[i]) && i > 0)
 			i = ft_check_flag(Info, i);
 		size_nbr = ft_len_nbr(Info, i);
-		nbr = ft_malloc(size_nbr + 1);
+		nbr = malloc(sizeof(char) * (size_nbr + 1));
 		nbr[size_nbr] = '\0';
 		while (size_nbr > 0)
 		{

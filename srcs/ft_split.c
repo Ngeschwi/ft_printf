@@ -6,11 +6,11 @@
 /*   By: ngeschwi <ngeschwi@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/22 11:26:24 by ngeschwi          #+#    #+#             */
-/*   Updated: 2021/04/22 15:42:22 by ngeschwi         ###   ########.fr       */
+/*   Updated: 2021/04/26 14:30:05 by ngeschwi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "ft_printf.h"
 
 static void	*free_tab(char **tab, int i)
 {
@@ -53,13 +53,19 @@ static int	count_word(char const *s, char c)
 	return (count);
 }
 
+static int	ft_boucle(char const *s, char c, int i)
+{
+	while (s[i] && s[i] == c)
+		i++;
+	return (i);
+}
+
 char	**ft_split(char const *s, char c)
 {
 	char	**tab;
 	int		i;
 	int		j;
 	int		k;
-	int		count;
 
 	if (!s)
 		return (NULL);
@@ -71,9 +77,8 @@ char	**ft_split(char const *s, char c)
 	while (j < count_word(s, c))
 	{
 		k = 0;
-		tab[j] = ft_malloc(size_word(s, c, i) + 1);
-		while (s[i] && s[i] == c)
-			i++;
+		tab[j] = malloc(sizeof(char) * (size_word(s, c, i) + 1));
+		i = ft_boucle(s, c, i);
 		while (s[i] && s[i] != c)
 			tab[j][k++] = s[i++];
 		tab[j++][k] = '\0';
